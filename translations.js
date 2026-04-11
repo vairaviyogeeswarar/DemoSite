@@ -1,4 +1,4 @@
-{
+const translations = {
   "en": {
     "nav_home": "Home",
     "nav_history": "History",
@@ -235,4 +235,4 @@
       }
     ]
   }
-}
+};

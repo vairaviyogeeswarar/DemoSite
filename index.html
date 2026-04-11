@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+Tamil:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.0.1">
 </head>
 <body>
     <header>
@@ -21,6 +21,7 @@
                 <li><a href="#home" data-key="nav_home">Home</a></li>
                 <li><a href="#history" data-key="nav_history">History</a></li>
                 <li><a href="#festivals" data-key="nav_festivals">Festivals</a></li>
+                <li><a href="#contributors" data-key="nav_contributors">Contributors</a></li>
                 <li><a href="#donations" data-key="nav_donations">Donations</a></li>
             </ul>
             <div class="lang-toggle">
@@ -36,8 +37,13 @@
                 <h1 data-key="hero_title">Arulmigu mutharamman Temple</h1>
                 <p class="subtitle" data-key="hero_subtitle">Suchindrum - Akkarai, Kanyakumari</p>
                 <div class="community-tag" data-key="hero_community">Vairavi - Yogeeswarar Community</div>
-                <div class="alert-box glass" data-key="kumbabishekam_alert">
-                    Preparations for the 2026 Maha Kumbabishekam are underway!
+                <div class="alert-box glass">
+                    <p data-key="kumbabishekam_alert">Preparations for the 2026 Maha Kumbabishekam are underway!</p>
+                    <p class="prompt-text" data-key="contribute_prompt">Want to be a part of this divine service?</p>
+                    <div class="button-group">
+                        <a href="#contributors" class="glass-btn small" data-key="view_contributors">View Contributors</a>
+                        <a href="#donations" class="glass-btn small accent" data-key="nav_donations">Donate Now</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -78,6 +84,19 @@
             </div>
         </section>
 
+        <section id="contributors" class="section">
+            <div class="container">
+                <h2 data-key="contributors_title">Maha Kumbhavisegam Ubayatharargal</h2>
+                <div class="contributors-container" id="contributors-list" data-key="contributors_list">
+                    <!-- Dynamic List -->
+                </div>
+                <div class="section-footer">
+                    <p data-key="contribute_prompt">Want to be a part of this divine service?</p>
+                    <a href="#donations" class="glass-btn" data-key="nav_donations">Make a Donation</a>
+                </div>
+            </div>
+        </section>
+
         <section id="donations" class="section">
             <div class="container">
                 <div class="donation-card glass">
@@ -87,23 +106,22 @@
                     <div class="donation-grid">
                         <div class="bank-details">
                             <div class="detail-item">
-                                <strong data-key="bank_trust_label">Name:</strong>
-                                <span data-key="bank_trust">Suchindrum Akkarai Yogeeswarar mutharamman Temple Trust</span>
+                                <strong data-key="bank_trust_label">Name:</strong><span data-key="bank_trust">Suchindrum Akkarai Yogeeswarar mutharamman Temple Trust</span>
                             </div>
                             <div class="detail-item">
-                                <strong>Bank:</strong> <span data-key="bank_name">Indian Overseas Bank</span>
+                                <strong data-key="bank_name_label">Bank:</strong><span data-key="bank_name">Indian Overseas Bank</span>
                             </div>
                             <div class="detail-item">
-                                <strong>Branch:</strong> <span data-key="bank_branch">Suchindrum</span>
+                                <strong data-key="bank_branch_label">Branch:</strong><span data-key="bank_branch">Suchindrum</span>
                             </div>
                             <div class="detail-item">
-                                <strong>A/c No:</strong> <span data-key="bank_account">272601000001515</span>
+                                <strong data-key="bank_account_label">A/c No:</strong><span data-key="bank_account">272601000001515</span>
                             </div>
                             <div class="detail-item">
-                                <strong>IFSC code:</strong> <span data-key="bank_ifsc">IOBA0002726</span>
+                                <strong data-key="bank_ifsc_label">IFSC code:</strong><span data-key="bank_ifsc">IOBA0002726</span>
                             </div>
                             <div class="detail-item">
-                                <strong>Branch Code:</strong> <span data-key="bank_branch_code">2726</span>
+                                <strong data-key="bank_branch_code_label">Branch Code:</strong><span data-key="bank_branch_code">2726</span>
                             </div>
                             
                             <div class="sms-instructions" data-key="sms_instructions">
@@ -138,6 +156,7 @@
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <script src="translations.js?v=1.0.1"></script>
+    <script src="main.js?v=1.0.1"></script>
 </body>
 </html>

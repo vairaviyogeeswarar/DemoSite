@@ -235,13 +235,20 @@ h3 {
 .detail-item {
     margin-bottom: 1rem;
     display: flex;
-    justify-content: space-between;
+    gap: 2rem;
     border-bottom: 1px solid var(--glass-border);
     padding-bottom: 0.5rem;
+    text-align: left;
 }
 
 .detail-item strong {
     color: var(--accent);
+    min-width: 120px;
+    flex-shrink: 0;
+}
+
+.detail-item span {
+    text-align: left;
 }
 
 .qr-container {
@@ -319,10 +326,122 @@ footer {
         flex-direction: column;
         gap: 1rem;
     }
+}
+
+/* Alert Box Button */
+.alert-box.glass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.5rem;
+}
+
+.prompt-text {
+    font-size: 1.1rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.glass-btn.small {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.95rem;
+}
+
+.glass-btn.accent {
+    background: var(--accent);
+    color: var(--primary-bg);
+}
+
+.glass-btn.accent:hover {
+    background: #fff;
+    color: var(--primary-bg);
+}
+
+/* Section Footer */
+.section-footer {
+    margin-top: 4rem;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 215, 0, 0.03);
+    border-radius: 12px;
+    border: 1px dashed var(--glass-border);
+}
+
+.section-footer p {
+    font-size: 1.2rem;
+    color: var(--accent-light);
+    margin-bottom: 1.5rem;
+}
+
+/* Contributors Section */
+.contributors-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contributor-card {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    gap: 2rem;
+    transition: var(--transition);
+    border-left: 4px solid transparent;
+}
+
+.contributor-card:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.08);
+    border-left-color: var(--accent);
+}
+
+.contributor-id {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    opacity: 0.3;
+    min-width: 3rem;
+    font-family: 'Outfit', sans-serif;
+}
+
+.contributor-details {
+    flex: 1;
+}
+
+.contributor-service {
+    font-weight: 700;
+    color: var(--accent-light);
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+}
+
+.contributor-names {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .contributor-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 1.5rem;
+    }
     
-    .nav-links {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
+    .contributor-id {
+        font-size: 1.5rem;
     }
 }
+

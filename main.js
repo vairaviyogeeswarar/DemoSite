@@ -1,15 +1,8 @@
 let currentLang = 'en';
-let translations = {};
 
-// Load translations from JSON
-async function loadTranslations() {
-    try {
-        const response = await fetch('translations.json');
-        translations = await response.json();
-        updateUI();
-    } catch (error) {
-        console.error('Error loading translations:', error);
-    }
+// Load translations from embedded object
+function init() {
+    updateUI();
 }
 
 // Update all elements with data-key attribute
@@ -20,10 +13,12 @@ function updateUI() {
         if (translations[currentLang] && translations[currentLang][key]) {
             const content = translations[currentLang][key];
             
-            // Special handling for lists (e.g., festivals)
+            // Special handling for lists
             if (Array.isArray(content)) {
                 if (el.id === 'festivals-list') {
                     renderFestivals(content);
+                } else if (el.id === 'contributors-list') {
+                    renderContributors(content);
                 }
             } else {
                 el.innerText = content;
@@ -48,6 +43,25 @@ function renderFestivals(list) {
     });
 }
 
+// Render contributors list
+function renderContributors(list) {
+    const listEl = document.getElementById('contributors-list');
+    listEl.innerHTML = '';
+    
+    list.forEach(item => {
+        const row = document.createElement('div');
+        row.className = 'contributor-card glass';
+        row.innerHTML = `
+            <div class="contributor-id">${item.id}</div>
+            <div class="contributor-details">
+                <div class="contributor-service">${item.service}</div>
+                <div class="contributor-names">${item.names}</div>
+            </div>
+        `;
+        listEl.appendChild(row);
+    });
+}
+
 // Toggle language
 document.getElementById('toggleLang').addEventListener('click', () => {
     currentLang = currentLang === 'en' ? 'ta' : 'en';
@@ -68,4 +82,4 @@ document.querySelectorAll('.section').forEach(section => {
 });
 
 // Initial Load
-document.addEventListener('DOMContentLoaded', loadTranslations);
+document.addEventListener('DOMContentLoaded', init);
