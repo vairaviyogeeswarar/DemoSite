@@ -28,7 +28,7 @@
                 <li><a href="index.html#festivals" data-key="nav_festivals">Festivals</a></li>
                 <li><a href="community.html" data-key="nav_community">Community</a></li>
                 <li><a href="2026_kumbabishekam.html" data-key="nav_2026_kumba" class="active">2026 Kumbabishekam</a></li>
-                <li><a href="index.html#contributors" data-key="nav_contributors">Contributors</a></li>
+                <li><a href="#contributors" data-key="nav_contributors">Contributors</a></li>
                 <li><a href="index.html#donations" data-key="nav_donations">Donations</a></li>
             </ul>
             <div class="lang-toggle">
@@ -163,6 +163,8 @@
                         justify-content: center;
                         opacity: 0;
                         transition: opacity 0.4s ease;
+                        overflow: auto; /* Allow scrolling when zoomed */
+                        padding: 2rem 0;
                     }
 
                     .fullscreen-overlay.show {
@@ -177,29 +179,44 @@
                         box-shadow: 0 0 50px rgba(0,0,0,0.8);
                         border-radius: 8px;
                         transform: scale(0.9);
-                        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), max-width 0.4s, max-height 0.4s;
+                        cursor: zoom-in;
                     }
 
                     .fullscreen-overlay.show img {
                         transform: scale(1);
                     }
 
+                    .fullscreen-overlay img.magnified {
+                        max-width: 180vw;
+                        max-height: none;
+                        transform: scale(1.5); /* Boost scale slightly too */
+                        cursor: zoom-out;
+                        margin: auto;
+                    }
+
                     .close-overlay {
                         position: absolute;
                         top: 2rem;
-                        right: 2rem;
-                        background: none;
-                        border: none;
+                        right: 3rem; /* Moved slightly for scrollbar */
+                        background: rgba(0,0,0,0.5);
+                        border-radius: 50%;
+                        width: 50px;
+                        height: 50px;
+                        border: 1px solid rgba(255,255,255,0.2);
                         color: white;
-                        font-size: 3rem;
+                        font-size: 2.5rem;
                         cursor: pointer;
-                        opacity: 0.7;
-                        transition: opacity 0.3s;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 2100;
+                        transition: all 0.3s;
                     }
 
                     .close-overlay:hover {
-                        opacity: 1;
-                        color: var(--accent);
+                        background: var(--accent);
+                        color: var(--primary-bg);
                     }
 
                     .overlay-nav {
@@ -300,16 +317,18 @@
                             const imgSrc = pages[idx].querySelector('img').src;
                             const pageLabel = translations[currentLang]['label_page'] || 'Page';
                             overlayImg.src = imgSrc;
+                            overlayImg.classList.remove('magnified'); // Reset zoom on new image
                             overlayCaption.innerText = `${pageLabel} ${idx + 1} / ${pages.length}`;
                             overlay.style.display = 'flex';
                             setTimeout(() => overlay.classList.add('show'), 10);
-                            document.body.style.overflow = 'hidden'; // Stop scroll
+                            // document.body.style.overflow = 'hidden'; // Removed to allow scroll presence
                         }
 
                         function closeFullscreen() {
                             overlay.classList.remove('show');
+                            overlayImg.classList.remove('magnified'); // Reset zoom
                             setTimeout(() => overlay.style.display = 'none', 400);
-                            document.body.style.overflow = ''; // Restore scroll
+                            // document.body.style.overflow = ''; // Restored
                         }
 
                         pages.forEach((page, idx) => {
@@ -317,6 +336,12 @@
                         });
 
                         closeOverlay.addEventListener('click', closeFullscreen);
+
+                        // Double Click Zoom
+                        overlayImg.addEventListener('dblclick', (e) => {
+                            e.stopPropagation();
+                            overlayImg.classList.toggle('magnified');
+                        });
                         
                         overlayPrev.addEventListener('click', (e) => {
                             e.stopPropagation();
@@ -339,29 +364,54 @@
                             if (e.target === overlay) closeFullscreen();
                         });
 
-                        // Keyboard Support
+                        // Keyboard & Scroll Support
+                        let isThrottled = false;
+                        function handleThrottledNav(dir) {
+                            if (isThrottled) return;
+                            isThrottled = true;
+                            if (dir === 'next' && currentIdx < pages.length - 1) {
+                                updatePages(currentIdx + 1);
+                                if (overlay.classList.contains('show')) openFullscreen(currentIdx);
+                            } else if (dir === 'prev' && currentIdx > 0) {
+                                updatePages(currentIdx - 1);
+                                if (overlay.classList.contains('show')) openFullscreen(currentIdx);
+                            }
+                            setTimeout(() => isThrottled = false, 500);
+                        }
+
                         document.addEventListener('keydown', (e) => {
                             if (e.key === 'Escape') closeFullscreen();
-                            if (e.key === 'ArrowLeft') {
-                                if (overlay.classList.contains('show')) {
-                                    if (currentIdx > 0) { updatePages(currentIdx - 1); openFullscreen(currentIdx); }
-                                } else {
-                                    if (currentIdx > 0) updatePages(currentIdx - 1);
-                                }
-                            }
-                            if (e.key === 'ArrowRight') {
-                                if (overlay.classList.contains('show')) {
-                                    if (currentIdx < pages.length - 1) { updatePages(currentIdx + 1); openFullscreen(currentIdx); }
-                                } else {
-                                    if (currentIdx < pages.length - 1) updatePages(currentIdx + 1);
-                                }
-                            }
+                            if (e.key === 'ArrowLeft') handleThrottledNav('prev');
+                            if (e.key === 'ArrowRight') handleThrottledNav('next');
+                            if (e.key === 'ArrowUp') handleThrottledNav('prev');
+                            if (e.key === 'ArrowDown') handleThrottledNav('next');
                         });
+
+                        // Vertical Scroll Navigation
+                        window.addEventListener('wheel', (e) => {
+                            if (Math.abs(e.deltaY) > 30) {
+                                if (e.deltaY > 0) handleThrottledNav('next');
+                                else handleThrottledNav('prev');
+                            }
+                        }, { passive: true });
 
                         // Initial state
                         updatePages(0);
                     });
                 </script>
+
+                <section id="contributors" class="section">
+                    <div class="container">
+                        <h2 data-key="contributors_title">Maha Kumbhavisegam Ubayatharargal</h2>
+                        <div class="contributors-container" id="contributors-list" data-key="contributors_list">
+                            <!-- Dynamic List -->
+                        </div>
+                        <div class="section-footer">
+                            <p data-key="contribute_prompt">Want to be a part of this divine service?</p>
+                            <a href="index.html#donations" class="glass-btn" data-key="nav_donations">Make a Donation</a>
+                        </div>
+                    </div>
+                </section>
 
 
             </div>
@@ -372,7 +422,7 @@
                 <h2 data-key="contribute_prompt">Want to be a part of this divine service?</h2>
                 <div class="button-group" style="margin-top: 2rem;">
                     <a href="index.html#donations" class="glass-btn accent" data-key="nav_donations">Donate Now</a>
-                    <a href="index.html#contributors" class="glass-btn" data-key="view_contributors">View Contributors</a>
+                    <a href="#contributors" class="glass-btn" data-key="view_contributors">View Contributors</a>
                 </div>
             </div>
         </section>
