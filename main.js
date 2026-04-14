@@ -1,4 +1,4 @@
-let currentLang = 'en';
+let currentLang = localStorage.getItem('selectedLanguage') || 'en';
 
 // Load translations from embedded object
 function init() {
@@ -65,6 +65,7 @@ function renderContributors(list) {
 // Toggle language
 document.getElementById('toggleLang').addEventListener('click', () => {
     currentLang = currentLang === 'en' ? 'ta' : 'en';
+    localStorage.setItem('selectedLanguage', currentLang);
     updateUI();
 });
 

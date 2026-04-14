@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Yogeeswara Community | Sri Mutharamman Temple</title>
+    <meta name="description"
+        content="A comprehensive socio-historical and theological analysis of the Saiva Brahmin diaspora and the Yogeeswara community.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+Tamil:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=1.0.1">
+    <style>
+        .article-hero {
+            height: 80vh;
+            background: linear-gradient(rgba(26, 11, 46, 0.75), rgba(26, 11, 46, 0.85)),
+                url('assets/community_hero.png') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 2rem 0;
+            position: relative;
+        }
+
+        .article-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.2;
+            max-width: 1000px;
+            margin-bottom: 2rem;
+            color: #fff;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .article-content {
+            max-width: 1000px;
+            margin: -120px auto 4rem;
+            padding: 4rem;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .article-body p {
+            margin-bottom: 1.8rem;
+            font-size: 1.15rem;
+            color: var(--text-main);
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .article-body h2 {
+            text-align: left;
+            margin: 4rem 0 1.5rem;
+            font-size: 2rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .article-body h3 {
+            color: var(--accent-light);
+            margin: 2.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* Table Styling */
+        .table-container {
+            margin: 3rem 0;
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        th,
+        td {
+            padding: 1.2rem 1.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        th {
+            background: rgba(255, 215, 0, 0.15);
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        caption {
+            padding: 1rem;
+            background: var(--glass);
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* Refined Reference Styling */
+        .references {
+            margin-top: 5rem;
+            padding: 3rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            border-top: 2px solid var(--accent);
+        }
+
+        .references h3 {
+            margin-top: 0;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        .references-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 1.2rem 2.5rem;
+            list-style: none;
+            padding: 0;
+        }
+
+        .references-list li {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: var(--text-muted);
+            scroll-margin-top: 100px;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .ref-marker {
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent);
+            font-size: 0.8rem;
+            opacity: 0.8;
+            font-family: inherit;
+        }
+
+        .references-list a {
+            color: var(--accent);
+            text-decoration: none;
+            opacity: 0.85;
+            transition: var(--transition);
+        }
+
+        .references-list a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .sup-ref {
+            font-size: 0.7rem;
+            vertical-align: super;
+            color: var(--accent);
+            font-weight: 700;
+            margin-left: 2px;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .sup-ref:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .tip-note {
+            background: rgba(255, 215, 0, 0.05);
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.5rem;
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+            color: var(--accent-light);
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .references-list {
+                grid-template-columns: 1fr;
+            }
+
+            .article-content {
+                padding: 1.5rem;
+                margin-top: -60px;
+                border-radius: 0;
+            }
+
+            .article-hero {
+                height: 60vh;
+                padding-top: 100px;
+            }
+
+            .article-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .article-body p {
+                font-size: 1.05rem;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="glass">
+            <div class="logo">
+                <span class="en">Mutharamman Temple</span>
+                <span class="ta hidden">முத்தாரம்மன் கோவில்</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#home" data-key="nav_home">Home</a></li>
+                <li><a href="index.html#history" data-key="nav_history">History</a></li>
+                <li><a href="community.html" data-key="nav_community">Community</a></li>
+                <li><a href="index.html#contributors" data-key="nav_contributors">Contributors</a></li>
+                <li><a href="index.html#donations" data-key="nav_donations">Contribute</a></li>
+            </ul>
+            <div class="lang-toggle">
+                <button id="toggleLang" class="glass-btn">TA / EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="article-hero">
+        <div class="community-tag">The Saiva Brahmin Diaspora</div>
+        <h1>The Yogeeswara Community: A Deep Dive into History, Beliefs, and Identity</h1>
+    </section>
+
+    <main class="container">
+        <article class="article-content glass">
+            <div class="tip-note">
+                <p style="margin-bottom: 0.8rem;">
+                    <strong>Tip:</strong> Click on the superscript numbers <span class="sup-ref">[1, 2]</span> throughout
+                    the text to jump directly to the source references at the bottom of the page.
+                </p>
+                <div style="border-top: 1px solid rgba(255, 215, 0, 0.2); padding-top: 0.8rem; font-size: 0.9rem; line-height: 1.5;">
+                    <span data-key="disclaimer_text">Disclaimer: This content is based on AI-assisted research and manual verification is ongoing. Our intent is purely educational and not to hurt any sentiments. For feedback or corrections, please visit our</span>
+                    <a href="https://github.com/DrSom/YogeesWebsite/issues" target="_blank" data-key="disclaimer_link" style="color: var(--accent); text-decoration: underline; font-weight: 600;">GitHub Issues</a>.
+                </div>
+            </div>
+
+            <div class="article-body">
+                <p>
+                    The term <strong>Yogeeswara</strong> (often referred to as <strong>Vairavis</strong>, <strong>Aanavaal</strong>, <strong>Matapatis</strong>, <strong>Matavathees</strong>, <strong>Pantaram</strong>, <strong>Sankham Vairavi</strong>, <strong>Pulavar</strong>, <strong>Ilangelvi</strong>, <strong>Veerashaivar</strong>, or <strong>Saiva Brahmins</strong>) represents a unique mix of religious standing and
+                    social identity within South India. Rooted in the Sanskrit language, the name
+                    identifies a "great saint who is equivalent to God" or, more accurately, a person who has
+                    reached the spiritual state of being one with the Supreme Lord (Iswara) through dedicated Yoga
+                    and meditation.<span><a href="#ref-1" class="sup-ref">[1]</a>, <a href="#ref-2"
+                            class="sup-ref">[2]</a>, <a href="#ref-6" class="sup-ref">[6]</a></span> This community, mostly found in Kerala
+                    and Tamil Nadu, has a heritage that goes beyond the local region, tracing its
+                    roots to the Himalayan peaks of Kailasa in Kashmir.<span><a href="#ref-2"
+                            class="sup-ref">[2]</a></span> As we look into the community’s history, we find a foundation built on ancient Saint (Rishi) ancestry, a journey to spread (promulgate) religious teachings, and modern efforts to
+                    save these traditions for the future.<span><a href="#ref-2"
+                            class="sup-ref">[2]</a></span>
+                </p>
+
+                <h2>Meaning of the Name and Spiritual Identity (Etymology & Ontology)</h2>
+                <p>
+                    To understand the Yogeeswara community, we must first look at the meaning of their name. In the ancient Sanskrit tradition, the name is not just something you are born with, but a description of spiritual success. It defines a person who has closed the
+                    gap between the human and the divine through inner discipline.<span><a href="#ref-1"
+                            class="sup-ref">[1]</a>, <a href="#ref-4" class="sup-ref">[4]</a></span> In the broader
+                    worship of Lord Siva (Saivism), the term Yogeeswara is often used as another name for Siva himself, and as a result, members of this community see themselves as the "sons of Siva".<span><a href="#ref-2" class="sup-ref">[2]</a>, <a href="#ref-3"
+                            class="sup-ref">[3]</a></span>
+                </p>
+                <p>
+                    This belief in divine origin (theogenic perception) shapes every part of their social life. Unlike many other groups in South India whose identities are tied to specific regions or jobs, the Yogeeswara community believes their origin is a "divine
+                    appointment."<span><a href="#ref-2" class="sup-ref">[2]</a></span> Their existence is based on a spiritual duty to uphold right conduct (Dharma) and act as the keepers of sacred
+                    knowledge.<span><a href="#ref-1" class="sup-ref">[1]</a>, <a href="#ref-4"
+                            class="sup-ref">[4]</a></span> Being both a "saint" (Yogi) and a "lord"
+                    (Iswara) suggests a community that has historically balanced deep spiritual practice with the management of temple affairs.
+                </p>
+
+                <h3>The Vairavi Tradition: Self-Sacrifice and Service</h3>
+                <p>
+                    A particularly distinct aspect of this group is the title <strong>"Vairavi"</strong>. Etymologically, it refers to a community that has historically dedicated itself to the service of the temple. Historical records highlight a profound tradition of "Vairavi" (Self-Sacrifice), where members—sometimes designated as <strong>"Ilangelvi Veerashaivar"</strong>—occasionally offered their lives for noble and spiritual causes, underscoring their absolute commitment as custodians of the sacred precincts.<span><a href="#ref-23" class="sup-ref">[23]</a></span>
+                </p>
+
+                <div class="table-container">
+                    <table>
+                        <caption>Table 1: Linguistic and Conceptual Dimensions of Identity</caption>
+                        <thead>
+                            <tr>
+                                <th>Terminology</th>
+                                <th>Sanskrit Roots</th>
+                                <th>Applied Meaning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Yogeeswara</td>
+                                <td>Yoga + Iswara</td>
+                                <td>A being who achieves divine equivalence through meditation.</td>
+                            </tr>
+                            <tr>
+                                <td>Sons of Siva</td>
+                                <td>Siva + Putra</td>
+                                <td>A biological and spiritual lineage tracing back to the deity.</td>
+                            </tr>
+                            <tr>
+                                <td>Brahmins of Brahmins</td>
+                                <td>Brahmana</td>
+                                <td>A status derived from their origin from the forehead of Brahma.</td>
+                            </tr>
+                            <tr>
+                                <td>Rishi Descendants</td>
+                                <td>Rishi + Vamsa</td>
+                                <td>A claim to the lineage of ancient seers.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>The Mythological Genesis: The Fire of Siva</h2>
+                <p>
+                    The foundational narrative of the Yogeeswara community is preserved in a legend that places their
+                    origin at a moment of cosmic crisis. According to the community’s traditional lore, a dispute once
+                    arose between Lord Brahma and Lord Vishnu regarding their respective superiority.<span><a
+                            href="#ref-1" class="sup-ref">[1]</a></span> Brahma, as the creator, argued that the act of
+                    bringing the world into existence was the most significant task. Vishnu, the sustainer, countered
+                    that creation is futile without proper maintenance.
+                </p>
+                <p>
+                    As these two deities became embroiled in their argument, they neglected their cosmic duties. In
+                    response, Lord Siva intervened by opening his "Third Eye," releasing a devastating fire intended to
+                    cleanse the negligence of the gods.<span><a href="#ref-1" class="sup-ref">[1]</a></span> Terrified,
+                    Brahma and Vishnu apologized, and Siva eventually withdrew the flame. The residual energy of this
+                    divine fire cooled into holy ashes (vibhuti).
+                </p>
+                <p>
+                    The legend states that Vishnu collected these ashes and presented them to Brahma, who smeared them
+                    across his forehead. From that point of contact—the seat of higher consciousness—twenty-one
+                    brilliant Brahmins emerged. These twenty-one individuals were the original Yogeeswara Brahmins.
+                    Because they were born from the forehead of the creator deity, they are traditionally referred to as
+                    the <strong>"Brahmins of the Brahmins"</strong>.<span><a href="#ref-1"
+                            class="sup-ref">[1]</a></span>
+                </p>
+
+                <h2>The Journey from North to South (Migration)</h2>
+                <p>
+                    The historical memory of the Yogeeswara community is tied to the region of Kailasa,
+                    now known as Kashmir.<span><a href="#ref-1" class="sup-ref">[1]</a>, <a
+                            href="#ref-2" class="sup-ref">[2]</a></span> Their presence in South India is the result of
+                     a planned move to spread the Saiva Siddhanta tradition. This movement is one of the important scholarly migrations (diasporas) of Indian history.
+                </p>
+                
+                <h3>Historical Connections in Suchindram and Putheri</h3>
+                <p>
+                    As the community migrated south, many settled in the Kanyakumari district, deeply integrating with prominent temples. Historical records, such as a copper plate from <strong>1445 A.D.</strong> and a temple deed from <strong>1743 A.D.</strong>, document that members of this community (then recorded as "Yogapparadesis" or Vairavis) served as <strong>"Anaval"</strong> (temple functionaries) at the legendary <strong>Suchindram Thanumalayan Temple</strong>. Their duties included guarding the three main entrances, organizing temple festivals, and performing rituals at the Kali shrine.<span><a href="#ref-24" class="sup-ref">[24]</a></span>
+                </p>
+                <p>
+                    Another significant landmark is the <strong>Yogeeswarar Temple in Putheri, Nagercoil</strong>. Unlike conventional temples, this sacred site was built over the <em>Jeeva Samadhi</em> (final resting place) of a great sage from the community. It stands today as a unique architectural and spiritual monument of their historical presence in the region.<span><a href="#ref-25" class="sup-ref">[25]</a></span>
+                </p>
+
+                <div class="table-container">
+                    <table>
+                        <caption>Table 2: Phases of the Yogeeswara Diaspora</caption>
+                        <thead>
+                            <tr>
+                                <th>Period</th>
+                                <th>Geographic Focus</th>
+                                <th>Societal Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ancient Origins</td>
+                                <td>Kailasa/Kashmir</td>
+                                <td>Establishment of Nandinatha Sampradaya.</td>
+                            </tr>
+                            <tr>
+                                <td>Promulgation</td>
+                                <td>Tamil Nadu</td>
+                                <td>Dissemination of the 28 Saiva Agamas.</td>
+                            </tr>
+                            <tr>
+                                <td>Expansion</td>
+                                <td>Kerala/Karnataka</td>
+                                <td>Settlement in Travancore via Sucheendram.</td>
+                            </tr>
+                            <tr>
+                                <td>Colonial era</td>
+                                <td>Madras Presidency</td>
+                                <td>1931 Census recognition as "descendants of Saints".</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h2>Historical Records and the 1931 Census (Ethnography)</h2>
+                <p>
+                    A key moment in how the community is recorded happened during the British era. The Census Report of
+                    1931 is often used as the main record.<span><a href="#ref-1" class="sup-ref">[1]</a>, <a
+                            href="#ref-4" class="sup-ref">[4]</a></span> Unlike many other groups, the 1931 Census
+                    clearly recorded the Yogeeswara as <strong>"the descendants of Saints or
+                        Rishis"</strong>.<span><a href="#ref-2" class="sup-ref">[2]</a></span> This gave an official stamp (secular validation) to the community’s traditions and set them apart from other priest groups. In some historical studies (ethnography), they are linked with the <strong>Veerashaiva</strong> group and sometimes mentioned alongside the Pandaram community, though they maintain their own clear identity as Saiva Brahmins.
+                </p>
+
+                <h2>Role of the Gurukkal</h2>
+                <p>
+                    The traditional life has been defined by two primary vocations: priesthood and education. Their
+                    primary occupation is described as "Priestly-hood," involving ritual management and the performance
+                    of Agamic rites.<span><a href="#ref-1" class="sup-ref">[1]</a>, <a href="#ref-2"
+                            class="sup-ref">[2]</a></span> Equally important is their role as educators, earning them
+                    the honorific <strong>"Gurukkal"</strong>, meaning teacher or scholar.<span><a href="#ref-2"
+                            class="sup-ref">[2]</a></span>
+                </p>
+                <p>
+                    Beyond education and high priesthood, they have historically held vital roles in temple aesthetics and preparation. This includes the sacred art of <strong>Pookattuthal</strong> (crafting delicate flower garlands for the deities) and the preparation of <strong>Kavadi</strong> for festivals, tasks that require both ritual purity and artistic precision. While many members have transitioned into modern professional fields today, these traditional services remain a core part of their cultural heritage.<span><a href="#ref-22" class="sup-ref">[22]</a></span>
+                </p>
+                <h2>Religious Beliefs and Tradition (Saiva Siddhanta)</h2>
+                <p>
+                    The spiritual heart of the community is the tradition of Saiva Siddhanta, based on the 28 sacred texts (Agamas). The community
+                    traces its spiritual family tree (lineage) through the Nandinatha tradition, starting with Maharishi Nandinatha
+                    of Kashmir (around 250 BCE).<span><a href="#ref-1" class="sup-ref">[1]</a></span> One of the most
+                    important figures is <strong>Maharishi Tirumular</strong>, who traveled from Kashmir to South
+                    India. His work, the <em>Tirumandiram</em>, remains a foundation of the community's spiritual life.
+                </p>
+                <p>
+                    Additionally, the community is known for special rituals involving <strong>Korakkar Siddhar</strong>, one of the eighteen legendary healers and saints (Siddhars). Their main deity is Lord Shiva, and their religious practices often involve special ceremonies based on temple rules (Agamic rites) that blend high-priestly traditions with local spiritual wisdom.
+                </p>
+
+                <h2>Contemporary Standing and Social Infrastructure</h2>
+                <p>
+                    In the modern world, the community has dealt with difficult social and economic changes. While they have always been rich in spiritual history, they have faced challenges that led to efforts for recognition as a "Backward Class" (OBC framework) in states like Kerala and Tamil Nadu. Community ties are kept strong through shared meeting places, such as the <strong>Yogeeswarar Community Hall in Nagercoil</strong>, which act as centers for gatherings and keeping their culture alive.
+                </p>
+
+
+                <div class="table-container">
+                    <table>
+                        <caption>Table 5: Significant Spiritual Sites</caption>
+                        <thead>
+                            <tr>
+                                <th>Location</th>
+                                <th>Spiritual Significance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Thirupattar</td>
+                                <td>Jeeva Samadhi of Maharishi Patanjali.</td>
+                            </tr>
+                            <tr>
+                                <td>Thiruvannamalai</td>
+                                <td>Agni Stalam; Home of many Siddhars.</td>
+                            </tr>
+                            <tr>
+                                <td>Kanchipuram</td>
+                                <td>Upanishad Brahmendral Madam.</td>
+                            </tr>
+                            <tr>
+                                <td>Sucheendram</td>
+                                <td>Traditional entry point for migration from Kashmir.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Conclusion</h2>
+                <p>
+                    The Yogeeswara community is living proof of a strong spiritual identity that has lasted through history and adapted to modern times. Their journey from the mountains of Kashmir to South India is a story of how a culture can move and thrive in a new place. As the "descendants of saints," they continue to connect ancient traditions with today's digital world.<span><a href="#ref-13" class="sup-ref">[13]</a></span>
+                </p>
+            </div>
+
+            <footer class="references" id="references">
+                <h3>References</h3>
+                <ul class="references-list">
+                    <li id="ref-1"><span class="ref-marker">^ 1.</span> <a
+                            href="http://yogeeswara.org/About_yogeeswara.php" target="_blank">Yogeeswara: About</a></li>
+                    <li id="ref-2"><span class="ref-marker">^ 2.</span> <a href="https://www.yogeeswara.org/"
+                            target="_blank">Yogeeswara Official Website</a></li>
+                    <li id="ref-3"><span class="ref-marker">^ 3.</span> <a href="http://yogeeswara.org/Foundation.php"
+                            target="_blank">Communal Records: Administrative Annexure</a></li>
+                    <li id="ref-4"><span class="ref-marker">^ 4.</span> <a
+                            href="http://www.yogeeswara.org/Foundation.php" target="_blank">Historical Data: Repository Reference</a></li>
+                    <li id="ref-5"><span class="ref-marker">^ 5.</span> <a
+                            href="https://archive.org/stream/dli.csl.2424/2424_djvu.txt" target="_blank">Report on
+                            Industrial Dispersal - Internet Archive</a></li>
+                    <li id="ref-6"><span class="ref-marker">^ 6.</span> <a
+                            href="http://kscbc.kerala.gov.in/images/stories/docs/57_96_1996.pdf" target="_blank">Inclusion of Communities - Kerala State Commission for Backward Classes (Report on Matavathees, Pantaram, and Vairavi nomenclatures)</a></li>
+                    <li id="ref-7"><span class="ref-marker">^ 7.</span> <a
+                            href="https://www.scribd.com/document/555854323/Kerala" target="_blank">OBC Caste List for
+                            Kerala - Scribd</a></li>
+                    <li id="ref-8"><span class="ref-marker">^ 8.</span> <a
+                            href="https://www.cee.kerala.gov.in/pga2024/pdf/Annexure_dip.pdf" target="_blank">Annexure -
+                            CEE, Kerala Official Document</a></li>
+                    <li id="ref-9"><span class="ref-marker">^ 9.</span> <a
+                            href="https://admission.uoc.ac.in/downloads/1774334658_Latest_News_entrance5699.pdf"
+                            target="_blank">Communities List (SEBC) - University of Calicut</a></li>
+                    <li id="ref-10"><span class="ref-marker">^ 10.</span> <a
+                            href="https://www.scribd.com/document/430237527/Central-List-of-Other-Backward-Classes-for-Kerala-pdf"
+                            target="_blank">Central List of OBCs For Kerala - Scribd</a></li>
+                    <li id="ref-11"><span class="ref-marker">^ 11.</span> <a
+                            href="https://en.wikipedia.org/wiki/Kurukkal" target="_blank">Kurukkal - Wikipedia</a></li>
+                    <li id="ref-12"><span class="ref-marker">^ 12.</span> <a href="http://yogeeswara.org/News.php"
+                            target="_blank">Yogeeswara News & Updates</a></li>
+                    <li id="ref-13"><span class="ref-marker">^ 13.</span> <a
+                            href="https://en.wikipedia.org/wiki/Bodhinatha_Veylanswami" target="_blank">Bodhinatha
+                            Veylanswami - Wikipedia</a></li>
+                    <li id="ref-14"><span class="ref-marker">^ 14.</span> <a
+                            href="https://en.wikipedia.org/wiki/Exodus_of_Kashmiri_Hindus" target="_blank">Exodus of
+                            Kashmiri Hindus - Wikipedia</a></li>
+                    <li id="ref-15"><span class="ref-marker">^ 15.</span> <a
+                            href="https://www.isec.ac.in/wp-content/uploads/2023/07/WP-237-Khalid_2.pdf"
+                            target="_blank">Migration of Kashmiri Pandits - ISEC Report</a></li>
+                    <li id="ref-16"><span class="ref-marker">^ 16.</span> <a
+                            href="https://kalyangeetha.wordpress.com/category/kshethradanam-temple-tours/tamilnadu-temples/page/2/"
+                            target="_blank">Tamilnadu Temples - Kshethradanam</a></li>
+                    <li id="ref-17"><span class="ref-marker">^ 17.</span> <a
+                            href="https://www.scribd.com/document/341047773/Jeeva-Samadhi" target="_blank">Exploring
+                            Jeeva Samadhi Experiences - Scribd</a></li>
+                    <li id="ref-18"><span class="ref-marker">^ 18.</span> <a
+                            href="https://kalyangeetha.wordpress.com/author/kalyangeetha/page/5/"
+                            target="_blank">kalyangeetha (Page 5) - Kshethradanam</a></li>
+                    <li id="ref-19"><span class="ref-marker">^ 19.</span> <a
+                            href="https://mydattatreya.com/bodhinatha-veylanswami/" target="_blank">Bodhinatha
+                            Veylanswami Biography</a></li>
+                    <li id="ref-20"><span class="ref-marker">^ 20.</span> <a
+                            href="https://www.himalayanacademy.com/satguru-bodhinatha-veylanswami/"
+                            target="_blank">Kauai Monastery Profile</a></li>
+                    <li id="ref-21"><span class="ref-marker">^ 21.</span> <a
+                            href="https://www.hheonline.org/staff.shtml" target="_blank">Monastic Staff - Hindu Heritage
+                            Endowment</a></li>
+                    <li id="ref-22"><span class="ref-marker">^ 22.</span> <a
+                            href="https://ta.wikipedia.org/wiki/%E0%AE%AA%E0%AE%A3%E0%AF%8D%E0%AE%9F%E0%AE%BE%E0%AE%B0%E0%AE%AE%E0%AF%8D_(%E0%AE%AC%E0%AE%AE%E0%AE%AF_%E0%AE%AE%E0%AE%AE%E0%AE%AA%E0%AF%81)" target="_blank">Pandaram (Religious Tradition) - Tamil Wikipedia</a></li>
+                    <li id="ref-23"><span class="ref-marker">^ 23.</span> <a
+                            href="https://www.facebook.com/100064606003155/posts/%E0%AE%B5%E0%AF%88%E0%AE%B0%E0%AE%BE%E0%AE%B5%E0%AE%BF-%E0%AE%86%E0%AE%A9%E0%AE%B5%E0%AE%BE%E0%AE%B3%E0%AF%8D-%E0%AE%85%E0%AE%B2%E0%AF%8D%E0%AE%B2%E0%AE%A4%E0%AF%81-%E0%AE%87%E0%AE%B3%E0%AE%99%E0%AF%8D%E0%AE%95%E0%AF%87%E0%AE%B3%E0%AF%8D%E0%AE%B5%E0%AE%BF-%E0%AE%B5%E0%AF%80%E0%AE%B0%E0%AE%9A%E0%AF%88%E0%AE%B5%E0%AE%B0%E0%AF%8Dvairavi-a-self-sacrificing-community-for/1454378097932194/" target="_blank">Vairavi: A Self-Sacrificing Community (Aanavaal/Ilangelvi) - Facebook Research Archive</a></li>
+                    <li id="ref-24"><span class="ref-marker">^ 24.</span> <a
+                            href="https://www.rjisacjournal.com" target="_blank">Research Journal of Humanities and Social Sciences: Vairavi Community at Suchindram (Copper Plate 1445 A.D. & Variola 1743 A.D.)</a></li>
+                    <li id="ref-25"><span class="ref-marker">^ 25.</span> <a
+                            href="https://www.dinamalar.com" target="_blank">Dinamalar: History of Putheri Yogeeswarar Temple and Jeeva Samadhi</a></li>
+                </ul>
+            </footer>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                &copy; 2026 Suchindrum Akkarai Mutharamman Temple Trust.
+            </div>
+        </div>
+    </footer>
+
+    <script src="translations.js?v=1.0.1"></script>
+    <script src="main.js?v=1.0.1"></script>
+</body>
+
+</html>

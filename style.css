@@ -145,6 +145,16 @@ nav {
     border: 1px solid var(--accent);
     border-radius: 40px;
     margin-bottom: 2rem;
+    transition: var(--transition);
+}
+
+.community-tag-link {
+    text-decoration: none;
+}
+
+.community-tag-link:hover .community-tag {
+    background: var(--accent);
+    color: var(--primary-bg);
 }
 
 .alert-box {
@@ -443,5 +453,33 @@ footer {
     .contributor-id {
         font-size: 1.5rem;
     }
+}
+
+/* Disclaimer & Footer */
+.disclaimer-section {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    text-align: center;
+}
+
+.disclaimer-section a {
+    color: var(--accent);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.copyright {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--glass-border);
+    opacity: 0.65;
+    font-size: 0.85rem;
+    text-align: center;
 }
 
