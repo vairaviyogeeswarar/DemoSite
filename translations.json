@@ -4,6 +4,8 @@
     "nav_history": "History",
     "nav_festivals": "Festivals",
     "nav_donations": "Contribute",
+    "nav_community": "Community",
+    "nav_2026_kumba": "2026 Kumbabishekam",
     "hero_title": "Arulmigu Mutharamman Temple",
     "hero_subtitle": "Suchindrum - Akkarai, Kanyakumari",
     "hero_community": "Vairavi - Yogeeswarar Community",
@@ -43,6 +45,12 @@
     "bank_ifsc_label": "IFSC code:",
     "bank_branch_code_label": "Branch Code:",
     "nav_contributors": "Contributors",
+    "kumba_page_title": "2026 Maha Kumbabishekam Preparations",
+    "kumba_gallery_title": "Event Gallery",
+    "kumba_description": "Glimpses of the preparations and divine activities for the upcoming 2026 Maha Kumbabishekam.",
+    "btn_next": "Next Page",
+    "btn_prev": "Previous Page",
+    "intro_video_caption": "Yogeeswarar Community Video Overview",
     "contributors_title": "Maha Kumbhavisegam Contributors",
     "contributors_list": [
       {
@@ -122,6 +130,7 @@
     "nav_history": "வரலாறு",
     "nav_festivals": "திருவிழாக்கள்",
     "nav_donations": "நன்கொடை",
+    "nav_2026_kumba": "2026 கும்பாபிஷேகம்",
     "hero_title": "அருள்மிகு முத்தாரம்மன் திருக்கோவில்",
     "hero_subtitle": "சுசீந்திரம் - அக்கரை, கன்னியாகுமரி",
     "hero_community": "வைராவி - யோகீஸ்வரர் சமுதாயம்",
@@ -161,6 +170,11 @@
     "bank_ifsc_label": "IFSC குறியீடு:",
     "bank_branch_code_label": "கிளைக் குறியீடு:",
     "nav_contributors": "உபயத்தாரர்கள்",
+    "kumba_page_title": "2026 மகா கும்பாபிஷேக தயாரிப்புகள்",
+    "kumba_gallery_title": "நிழற்படக் தொகுப்பு",
+    "kumba_description": "2026 மகா கும்பாபிஷேகத்திற்காக நடைபெற்று வரும் தயாரிப்புகள் மற்றும் ஆன்மீக நிகழ்வுகளின் தொகுப்பு.",
+    "btn_next": "அடுத்த பக்கம்",
+    "btn_prev": "முந்தைய பக்கம்",
     "contributors_title": "மகா கும்பாபிஷேக கைங்கர்ய திருப்பணி உபயத்தாரர்கள்",
     "contributors_list": [
       {

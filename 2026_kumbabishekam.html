@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Maha Kumbabishekam | Sri Mutharamman Temple</title>
+    <meta name="description"
+        content="Glimpses of the 2026 Maha Kumbabishekam preparations at Sri Mutharamman Temple, Suchindrum Akkarai.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Noto+Sans+Tamil:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=1.0.1">
+</head>
+
+<body>
+    <header>
+        <nav class="glass">
+            <div class="logo">
+                <span class="en">Mutharamman Temple</span>
+                <span class="ta hidden">முத்தாரம்மன் கோவில்</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#home" data-key="nav_home">Home</a></li>
+                <li><a href="index.html#history" data-key="nav_history">History</a></li>
+                <li><a href="index.html#festivals" data-key="nav_festivals">Festivals</a></li>
+                <li><a href="community.html" data-key="nav_community">Community</a></li>
+                <li><a href="2026_kumbabishekam.html" data-key="nav_2026_kumba" class="active">2026 Kumbabishekam</a></li>
+                <li><a href="index.html#contributors" data-key="nav_contributors">Contributors</a></li>
+                <li><a href="index.html#donations" data-key="nav_donations">Donations</a></li>
+            </ul>
+            <div class="lang-toggle">
+                <button id="toggleLang" class="glass-btn">TA / EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section" style="padding-top: 10rem;">
+            <div class="container">
+                <h1 data-key="kumba_page_title" style="text-align: center; margin-bottom: 1rem;">2026 Maha Kumbabishekam Preparations</h1>
+                <p data-key="kumba_description" style="text-align: center; max-width: 800px; margin: 0 auto 4rem; color: var(--text-muted);">
+                    Glimpses of the preparations and divine activities for the upcoming 2026 Maha Kumbabishekam.
+                </p>
+
+                <h2 data-key="kumba_gallery_title">Event Gallery</h2>
+                
+                <div class="book-container">
+                    <div class="book-slider" id="bookSlider">
+                        <div class="book-page active" data-index="0"><img src="assets/26Kumba1.png" alt="Page 1"></div>
+                        <div class="book-page" data-index="1"><img src="assets/26Kumba2.png" alt="Page 2"></div>
+                        <div class="book-page" data-index="2"><img src="assets/26Kumba3.png" alt="Page 3"></div>
+                        <div class="book-page" data-index="3"><img src="assets/26Kumba4.png" alt="Page 4"></div>
+                        <div class="book-page" data-index="4"><img src="assets/26Kumba5.png" alt="Page 5"></div>
+                        <div class="book-page" data-index="5"><img src="assets/26Kumba6.png" alt="Page 6"></div>
+                        <div class="book-page" data-index="6"><img src="assets/26Kumba7.png" alt="Page 7"></div>
+                        <div class="book-page" data-index="7"><img src="assets/26Kumba8.png" alt="Page 8"></div>
+                    </div>
+                    
+                    <div class="book-nav">
+                        <button id="prevBtn" class="glass-btn small"><span data-key="btn_prev">Previous Page</span></button>
+                        <span class="page-indicator"><span id="currentPage">1</span> / 8</span>
+                        <button id="nextBtn" class="glass-btn small"><span data-key="btn_next">Next Page</span></button>
+                    </div>
+                </div>
+
+                <!-- Fullscreen Overlay -->
+                <div id="fullscreenOverlay" class="fullscreen-overlay">
+                    <button class="close-overlay">&times;</button>
+                    <button class="overlay-nav prev">&lsaquo;</button>
+                    <img id="overlayImg" src="" alt="Fullscreen view">
+                    <button class="overlay-nav next">&rsaquo;</button>
+                    <div class="overlay-caption" id="overlayCaption"></div>
+                </div>
+
+                <style>
+                    .book-container {
+                        max-width: 1100px; /* Increased size */
+                        margin: 2rem auto;
+                        position: relative;
+                        padding: 1rem;
+                    }
+
+                    .book-slider {
+                        position: relative;
+                        height: 750px; /* Increased height */
+                        width: 100%;
+                        overflow: hidden;
+                        border-radius: 24px;
+                        box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
+                        background: var(--glass);
+                        border: 1px solid var(--glass-border);
+                        cursor: zoom-in;
+                    }
+
+                    .book-page {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        opacity: 0;
+                        transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+                        transform: translateX(100px) scale(0.9);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        pointer-events: none;
+                    }
+
+                    .book-page.active {
+                        opacity: 1;
+                        transform: translateX(0) scale(1);
+                        pointer-events: auto;
+                        z-index: 2;
+                    }
+
+                    .book-page.prev {
+                        transform: translateX(-100px) scale(0.9);
+                    }
+
+                    .book-page img {
+                        max-width: 95%;
+                        max-height: 95%;
+                        object-fit: contain;
+                        border-radius: 12px;
+                        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+                    }
+
+                    .book-nav {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 2rem;
+                        margin-top: 2.5rem;
+                    }
+
+                    .page-indicator {
+                        font-family: 'Outfit', sans-serif;
+                        font-weight: 600;
+                        color: var(--accent);
+                        background: var(--glass);
+                        padding: 0.6rem 2rem;
+                        border-radius: 30px;
+                        border: 1px solid var(--glass-border);
+                        font-size: 1.1rem;
+                    }
+
+                    /* Fullscreen Overlay Styles */
+                    .fullscreen-overlay {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(10, 5, 20, 0.98);
+                        backdrop-filter: blur(15px);
+                        z-index: 2000;
+                        display: none;
+                        align-items: center;
+                        justify-content: center;
+                        opacity: 0;
+                        transition: opacity 0.4s ease;
+                    }
+
+                    .fullscreen-overlay.show {
+                        display: flex;
+                        opacity: 1;
+                    }
+
+                    .fullscreen-overlay img {
+                        max-width: 90vw;
+                        max-height: 85vh;
+                        object-fit: contain;
+                        box-shadow: 0 0 50px rgba(0,0,0,0.8);
+                        border-radius: 8px;
+                        transform: scale(0.9);
+                        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    }
+
+                    .fullscreen-overlay.show img {
+                        transform: scale(1);
+                    }
+
+                    .close-overlay {
+                        position: absolute;
+                        top: 2rem;
+                        right: 2rem;
+                        background: none;
+                        border: none;
+                        color: white;
+                        font-size: 3rem;
+                        cursor: pointer;
+                        opacity: 0.7;
+                        transition: opacity 0.3s;
+                    }
+
+                    .close-overlay:hover {
+                        opacity: 1;
+                        color: var(--accent);
+                    }
+
+                    .overlay-nav {
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        background: rgba(255, 255, 255, 0.05);
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        color: white;
+                        font-size: 4rem;
+                        padding: 1rem 2rem;
+                        cursor: pointer;
+                        border-radius: 50%;
+                        transition: all 0.3s;
+                        line-height: 1;
+                    }
+
+                    .overlay-nav:hover {
+                        background: var(--accent);
+                        color: var(--primary-bg);
+                    }
+
+                    .overlay-nav.prev { left: 2rem; }
+                    .overlay-nav.next { right: 2rem; }
+
+                    .overlay-caption {
+                        position: absolute;
+                        bottom: 2rem;
+                        color: var(--accent-light);
+                        font-family: 'Outfit', sans-serif;
+                        font-size: 1.2rem;
+                        font-weight: 500;
+                        background: rgba(0,0,0,0.5);
+                        padding: 0.5rem 2rem;
+                        border-radius: 20px;
+                    }
+
+                    @media (max-width: 768px) {
+                        .book-slider {
+                            height: 450px;
+                        }
+                        .overlay-nav {
+                            padding: 0.5rem 1rem;
+                            font-size: 2rem;
+                        }
+                        .overlay-nav.prev { left: 0.5rem; }
+                        .overlay-nav.next { right: 0.5rem; }
+                    }
+                </style>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const pages = document.querySelectorAll('.book-page');
+                        const prevBtn = document.getElementById('prevBtn');
+                        const nextBtn = document.getElementById('nextBtn');
+                        const currentPageDisplay = document.getElementById('currentPage');
+                        const overlay = document.getElementById('fullscreenOverlay');
+                        const overlayImg = document.getElementById('overlayImg');
+                        const closeOverlay = document.querySelector('.close-overlay');
+                        const overlayPrev = document.querySelector('.overlay-nav.prev');
+                        const overlayNext = document.querySelector('.overlay-nav.next');
+                        const overlayCaption = document.getElementById('overlayCaption');
+                        
+                        let currentIdx = 0;
+
+                        function updatePages(newIdx) {
+                            currentIdx = newIdx;
+                            
+                            pages.forEach((page, i) => {
+                                page.classList.remove('active', 'prev');
+                                if (i === currentIdx) {
+                                    page.classList.add('active');
+                                } else if (i < currentIdx) {
+                                    page.classList.add('prev');
+                                }
+                            });
+
+                            currentPageDisplay.innerText = currentIdx + 1;
+                            
+                            // Disable/Enable buttons
+                            prevBtn.style.opacity = currentIdx === 0 ? '0.3' : '1';
+                            prevBtn.style.pointerEvents = currentIdx === 0 ? 'none' : 'auto';
+                            nextBtn.style.opacity = currentIdx === pages.length - 1 ? '0.3' : '1';
+                            nextBtn.style.pointerEvents = currentIdx === pages.length - 1 ? 'none' : 'auto';
+                        }
+
+                        // Slider Navigation
+                        prevBtn.addEventListener('click', () => {
+                            if (currentIdx > 0) updatePages(currentIdx - 1);
+                        });
+
+                        nextBtn.addEventListener('click', () => {
+                            if (currentIdx < pages.length - 1) updatePages(currentIdx + 1);
+                        });
+
+                        // Fullscreen Management
+                        function openFullscreen(idx) {
+                            const imgSrc = pages[idx].querySelector('img').src;
+                            const pageLabel = translations[currentLang]['label_page'] || 'Page';
+                            overlayImg.src = imgSrc;
+                            overlayCaption.innerText = `${pageLabel} ${idx + 1} / ${pages.length}`;
+                            overlay.style.display = 'flex';
+                            setTimeout(() => overlay.classList.add('show'), 10);
+                            document.body.style.overflow = 'hidden'; // Stop scroll
+                        }
+
+                        function closeFullscreen() {
+                            overlay.classList.remove('show');
+                            setTimeout(() => overlay.style.display = 'none', 400);
+                            document.body.style.overflow = ''; // Restore scroll
+                        }
+
+                        pages.forEach((page, idx) => {
+                            page.addEventListener('click', () => openFullscreen(idx));
+                        });
+
+                        closeOverlay.addEventListener('click', closeFullscreen);
+                        
+                        overlayPrev.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            if (currentIdx > 0) {
+                                updatePages(currentIdx - 1);
+                                openFullscreen(currentIdx);
+                            }
+                        });
+
+                        overlayNext.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            if (currentIdx < pages.length - 1) {
+                                updatePages(currentIdx + 1);
+                                openFullscreen(currentIdx);
+                            }
+                        });
+
+                        // Close on background click
+                        overlay.addEventListener('click', (e) => {
+                            if (e.target === overlay) closeFullscreen();
+                        });
+
+                        // Keyboard Support
+                        document.addEventListener('keydown', (e) => {
+                            if (e.key === 'Escape') closeFullscreen();
+                            if (e.key === 'ArrowLeft') {
+                                if (overlay.classList.contains('show')) {
+                                    if (currentIdx > 0) { updatePages(currentIdx - 1); openFullscreen(currentIdx); }
+                                } else {
+                                    if (currentIdx > 0) updatePages(currentIdx - 1);
+                                }
+                            }
+                            if (e.key === 'ArrowRight') {
+                                if (overlay.classList.contains('show')) {
+                                    if (currentIdx < pages.length - 1) { updatePages(currentIdx + 1); openFullscreen(currentIdx); }
+                                } else {
+                                    if (currentIdx < pages.length - 1) updatePages(currentIdx + 1);
+                                }
+                            }
+                        });
+
+                        // Initial state
+                        updatePages(0);
+                    });
+                </script>
+
+
+            </div>
+        </section>
+
+        <section class="section dark">
+            <div class="container" style="text-align: center;">
+                <h2 data-key="contribute_prompt">Want to be a part of this divine service?</h2>
+                <div class="button-group" style="margin-top: 2rem;">
+                    <a href="index.html#donations" class="glass-btn accent" data-key="nav_donations">Donate Now</a>
+                    <a href="index.html#contributors" class="glass-btn" data-key="view_contributors">View Contributors</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3 data-key="hero_title">Mutharamman Temple</h3>
+                    <p data-key="contact_phone">Phones: 8825877618, 9443994687</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://www.google.com/maps/place/Yogeeswarar+Mutharamman+Temple/@8.1470104,77.4617732,15z/data=!4m12!1m5!8m4!1e2!2s107804072278706150546!3m1!1e1!3m5!1s0x3b04f17fd67cdce5:0x4445e7332bd5911c!8m2!3d8.1587314!4d77.4700314!16s%2Fg%2F11fylr1ldc?hl=en&entry=ttu&g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D"
+                        target="_blank" class="glass-btn" data-key="view_maps">View on Maps</a>
+                </div>
+            </div>
+            <div class="disclaimer-section">
+                <span data-key="disclaimer_text">Disclaimer: This content is based on AI-assisted research and manual verification is ongoing. Our intent is purely educational and not to hurt any sentiments. For feedback or corrections, please visit our</span>
+                <a href="https://github.com/DrSom/YogeesWebsite/issues" target="_blank" data-key="disclaimer_link">GitHub Issues</a>.
+            </div>
+            <div class="copyright">
+                &copy; 2026 Suchindrum Akkarai Mutharamman Temple Trust.
+            </div>
+        </div>
+    </footer>
+
+    <script src="translations.js?v=1.0.1"></script>
+    <script src="main.js?v=1.0.1"></script>
+</body>
+
+</html>
