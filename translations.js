@@ -54,6 +54,7 @@ const translations = {
     "btn_next": "Next Page",
     "btn_prev": "Previous Page",
     "label_page": "Page",
+    "guru_pooja_title": "Arulmigu Korakka Nathar Temple - Panguni Uthiram - Guru Pooja",
     "contributors_title": "Maha Kumbhavisegam Contributors",
     "contributors_list": [
       {
@@ -184,6 +185,7 @@ const translations = {
     "btn_next": "அடுத்த பக்கம்",
     "btn_prev": "முந்தைய பக்கம்",
     "label_page": "பக்கம்",
+    "guru_pooja_title": "அருள்மிகு கோரக்க நாதர் கோவில் - பங்குனி உத்திரம் - குரு பூஜை",
     "contributors_title": "மகா கும்பாபிஷேக கைங்கர்ய திருப்பணி உபயத்தாரர்கள்",
     "contributors_list": [
       {
