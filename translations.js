@@ -46,6 +46,7 @@ const translations = {
     "bank_ifsc_label": "IFSC code:",
     "bank_branch_code_label": "Branch Code:",
     "nav_contributors": "Contributors",
+    "intro_video_caption": "Yogeeswarar Community Video Overview",
     "contributors_title": "Maha Kumbhavisegam Contributors",
     "contributors_list": [
       {
@@ -167,6 +168,7 @@ const translations = {
     "bank_branch_code_label": "கிளைக் குறியீடு:",
     "nav_contributors": "உபயத்தாரர்கள்",
     "nav_community": "சமுதாயம்",
+    "intro_video_caption": "யோகீஸ்வரர் சமுதாய காணொளி கண்ணோட்டம்",
     "contributors_title": "மகா கும்பாபிஷேக கைங்கர்ய திருப்பணி உபயத்தாரர்கள்",
     "contributors_list": [
       {
