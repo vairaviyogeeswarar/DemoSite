@@ -120,6 +120,14 @@
                         <div class="marquee-item"><img src="assets/20260401_KorandiGuruPooja/WhatsApp Image 2026-04-01 at 21.31.57.jpeg" alt="Guru Pooja"></div>
                     </div>
                 </div>
+                <!-- Fullscreen Overlay -->
+                <div id="fullscreenOverlay" class="fullscreen-overlay">
+                    <button class="close-overlay">&times;</button>
+                    <button class="overlay-nav prev">&lsaquo;</button>
+                    <img id="overlayImg" src="" alt="Fullscreen view">
+                    <button class="overlay-nav next">&rsaquo;</button>
+                    <div class="overlay-caption" id="overlayCaption"></div>
+                </div>
             </div>
         </section>
 
@@ -198,7 +206,100 @@
     </footer>
 
     <script src="translations.js?v=1.0.1"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const marqueeItems = document.querySelectorAll('.marquee-item');
+            const overlay = document.getElementById('fullscreenOverlay');
+            const overlayImg = document.getElementById('overlayImg');
+            const closeOverlay = document.querySelector('.close-overlay');
+            const overlayPrev = document.querySelector('.overlay-nav.prev');
+            const overlayNext = document.querySelector('.overlay-nav.next');
+            const overlayCaption = document.getElementById('overlayCaption');
+            
+            let currentIdx = 0;
+
+            function updateOverlay(idx) {
+                currentIdx = idx;
+                const img = marqueeItems[idx].querySelector('img');
+                const pageLabel = translations[currentLang]['label_page'] || 'Page';
+                
+                overlayImg.src = img.src;
+                overlayImg.classList.remove('magnified'); 
+                overlayCaption.innerText = `${pageLabel} ${(currentIdx % (marqueeItems.length / 2)) + 1} / ${marqueeItems.length / 2}`;
+                
+                // Show/Hide nav arrows if needed (optional since it's infinite, but let's keep it simple)
+                overlay.style.display = 'flex';
+                setTimeout(() => overlay.classList.add('show'), 10);
+            }
+
+            function closeFullscreen() {
+                overlay.classList.remove('show');
+                overlayImg.classList.remove('magnified');
+                setTimeout(() => overlay.style.display = 'none', 400);
+            }
+
+            marqueeItems.forEach((item, idx) => {
+                item.addEventListener('click', () => updateOverlay(idx));
+            });
+
+            closeOverlay.addEventListener('click', closeFullscreen);
+
+            overlayImg.addEventListener('dblclick', (e) => {
+                e.stopPropagation();
+                overlayImg.classList.toggle('magnified');
+            });
+
+            overlayPrev.addEventListener('click', (e) => {
+                e.stopPropagation();
+                let nextIdx = (currentIdx - 1 + marqueeItems.length) % marqueeItems.length;
+                updateOverlay(nextIdx);
+            });
+
+            overlayNext.addEventListener('click', (e) => {
+                e.stopPropagation();
+                let nextIdx = (currentIdx + 1) % marqueeItems.length;
+                updateOverlay(nextIdx);
+            });
+
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeFullscreen();
+            });
+
+            // Keyboard & Scroll Support
+            let isThrottled = false;
+            function handleThrottledNav(dir) {
+                if (isThrottled) return;
+                isThrottled = true;
+                if (dir === 'next') {
+                    let nextIdx = (currentIdx + 1) % marqueeItems.length;
+                    updateOverlay(nextIdx);
+                } else if (dir === 'prev') {
+                    let nextIdx = (currentIdx - 1 + marqueeItems.length) % marqueeItems.length;
+                    updateOverlay(nextIdx);
+                }
+                setTimeout(() => isThrottled = false, 500);
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (!overlay.classList.contains('show')) return;
+                if (e.key === 'Escape') closeFullscreen();
+                if (e.key === 'ArrowLeft') handleThrottledNav('prev');
+                if (e.key === 'ArrowRight') handleThrottledNav('next');
+                if (e.key === 'ArrowUp') handleThrottledNav('prev');
+                if (e.key === 'ArrowDown') handleThrottledNav('next');
+            });
+
+            window.addEventListener('wheel', (e) => {
+                if (!overlay.classList.contains('show')) return;
+                if (Math.abs(e.deltaY) > 30) {
+                    if (e.deltaY > 0) handleThrottledNav('next');
+                    else handleThrottledNav('prev');
+                }
+            }, { passive: true });
+        });
+    </script>
     <script src="main.js?v=1.0.1"></script>
 </body>
+
 
 </html>
